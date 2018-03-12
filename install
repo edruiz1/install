@@ -107,13 +107,6 @@ def macos_version
   @macos_version ||= Version.new(`/usr/bin/sw_vers -productVersion`.chomp[/10\.\d+/])
 end
 
-def should_install_command_line_tools?
-  return false if force_curl?
-  return false if macos_version < "10.9"
-  !File.exist?("/Library/Developer/CommandLineTools/usr/bin/git") ||
-    !File.exist?("/usr/include/iconv.h")
-end
-
 def git
   return false if force_curl?
 

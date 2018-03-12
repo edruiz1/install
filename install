@@ -312,18 +312,6 @@ end
 
 ohai "Next steps:"
 
-if macos_version < "10.9" && macos_version > "10.6"
-  `/usr/bin/cc --version 2> /dev/null` =~ /clang-(\d{2,})/
-  version = $1.to_i
-  if version < 425
-    puts "- Install the #{Tty.bold}Command Line Tools for Xcode:"
-    puts "    #{Tty.underline}https://developer.apple.com/downloads#{Tty.reset}"
-  end
-elsif !File.exist? "/usr/bin/cc"
-  puts "- Install #{Tty.bold}Xcode:"
-  puts "    #{Tty.underline}https://developer.apple.com/xcode#{Tty.reset}"
-end
-
 unless git
   puts "- Run `brew update --force` to complete installation by installing:"
   puts "    #{HOMEBREW_PREFIX}/share/doc/homebrew"
